@@ -1,4 +1,4 @@
-package database
+package controller
 
 import (
 	"database/sql"
@@ -8,6 +8,8 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/hirokikondo86/API-server/model"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
@@ -39,7 +41,7 @@ func ShowAll(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err.Error())
 	}
-	users := Users{}
+	users := model.Users{}
 	var id int
 	var name, mail, pass string
 	var created, modified string
@@ -75,7 +77,7 @@ func Show(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err.Error())
 	}
-	users := Users{}
+	users := model.Users{}
 	var id int
 	var name, mail, pass string
 	var created, modified string
@@ -110,7 +112,7 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 	}
 
-	user := Users{}
+	user := model.Users{}
 	err = json.Unmarshal(body, &user)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -141,7 +143,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 	}
 
-	user := Users{}
+	user := model.Users{}
 	err = json.Unmarshal(body, &user)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)

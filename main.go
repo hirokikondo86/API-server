@@ -6,18 +6,19 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
+	"github.com/hirokikondo86/API-server/controller"
 )
 
 func main() {
 	log.Println("Server started on: http://localhost:8001")
 
 	Router := mux.NewRouter()
-	Router.HandleFunc("/", Index)
-	Router.HandleFunc("/api/v1/show", ShowAll).Methods("GET")
-	Router.HandleFunc("/api/v1/show/{id}", Show).Methods("GET")
-	Router.HandleFunc("/api/v1/insert", Insert).Methods("POST")
-	Router.HandleFunc("/api/v1/update/{id}", Update).Methods("PUT")
-	Router.HandleFunc("/api/v1/delete/{id}", Delete).Methods("DELETE")
+	Router.HandleFunc("/", controller.Index)
+	Router.HandleFunc("/api/v1/show", controller.ShowAll).Methods("GET")
+	Router.HandleFunc("/api/v1/show/{id}", controller.Show).Methods("GET")
+	Router.HandleFunc("/api/v1/insert", controller.Insert).Methods("POST")
+	Router.HandleFunc("/api/v1/update/{id}", controller.Update).Methods("PUT")
+	Router.HandleFunc("/api/v1/delete/{id}", controller.Delete).Methods("DELETE")
 
 	server := http.Server{
 		Addr:         ":8001",
