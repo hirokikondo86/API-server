@@ -1,4 +1,4 @@
-package main
+package model
 
 type Users struct {
 	Id       int    `json:"id"`
