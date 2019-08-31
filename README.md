@@ -1,2 +1,2 @@
-# API-server
+# Go API
 <p>CRUD API</p>
