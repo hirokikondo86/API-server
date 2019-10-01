@@ -1,2 +1,2 @@
-# Go API
-<p>CRUD API</p>
+# Go CRUD API
+GoでCRUDなAPIを作ってみた。
